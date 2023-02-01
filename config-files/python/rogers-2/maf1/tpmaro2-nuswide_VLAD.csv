@@ -1,0 +1,11 @@
+Config, Value
+Dataset_Path, /home/biomal/Datasets
+Temporary_Path, /dev/shm/tpmaro2-nuswide_VLAD
+Partitions_Path, /home/biomal/Best-Partitions/rogers-2/maf1
+Implementation, python
+Similarity, rogers-2
+Criteria, maf1
+Dataset_Name, nuswide_VLAD
+Number_Dataset, 51
+Number_Folds, 10
+Number_Cores, 1

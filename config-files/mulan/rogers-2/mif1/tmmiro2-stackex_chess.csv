@@ -1,0 +1,11 @@
+Config, Value
+Dataset_Path, /home/biomal/Datasets
+Temporary_Path, /dev/shm/tmmiro2-stackex_chess
+Partitions_Path, /home/biomal/Best-Partitions/rogers-2/mif1
+Implementation, mulan
+Similarity, rogers-2
+Criteria, mif1
+Dataset_Name, stackex_chess
+Number_Dataset, 67
+Number_Folds, 10
+Number_Cores, 1

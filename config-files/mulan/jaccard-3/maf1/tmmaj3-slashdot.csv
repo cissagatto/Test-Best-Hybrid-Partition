@@ -1,0 +1,11 @@
+Config, Value
+Dataset_Path, /home/biomal/Datasets
+Temporary_Path, /dev/shm/tmmaj3-slashdot
+Partitions_Path, /home/biomal/Best-Partitions/jaccard-3/maf1
+Implementation, mulan
+Similarity, jaccard-3
+Criteria, maf1
+Dataset_Name, slashdot
+Number_Dataset, 64
+Number_Folds, 10
+Number_Cores, 1

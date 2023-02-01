@@ -1,0 +1,11 @@
+Config, Value
+Dataset_Path, /home/biomal/Datasets
+Temporary_Path, /dev/shm/tmmaro2-rcv1sub5
+Partitions_Path, /home/biomal/Best-Partitions/rogers-2/maf1
+Implementation, mulan
+Similarity, rogers-2
+Criteria, maf1
+Dataset_Name, rcv1sub5
+Number_Dataset, 60
+Number_Folds, 10
+Number_Cores, 1

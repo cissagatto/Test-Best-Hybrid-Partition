@@ -1,0 +1,11 @@
+Config, Value
+Dataset_Path, /home/biomal/Datasets
+Temporary_Path, /dev/shm/tcmaj3-yahoo_arts
+Partitions_Path, /home/biomal/Best-Partitions/jaccard-3/maf1
+Implementation, clus
+Similarity, jaccard-3
+Criteria, maf1
+Dataset_Name, yahoo_arts
+Number_Dataset, 78
+Number_Folds, 10
+Number_Cores, 1

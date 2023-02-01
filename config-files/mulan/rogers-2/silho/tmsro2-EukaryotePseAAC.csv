@@ -1,0 +1,11 @@
+Config, Value
+Dataset_Path, /home/biomal/Datasets
+Temporary_Path, /dev/shm/tmsro2-EukaryotePseAAC
+Partitions_Path, /home/biomal/Best-Partitions/rogers-2/silho
+Implementation, mulan
+Similarity, rogers-2
+Criteria, silho
+Dataset_Name, EukaryotePseAAC
+Number_Dataset, 29
+Number_Folds, 10
+Number_Cores, 1
