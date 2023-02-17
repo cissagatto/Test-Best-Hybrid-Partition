@@ -47,7 +47,7 @@ execute.run.python <- function(parameters){
   source("misc.R")
   
   setwd(FolderScripts)
-  source("test-python-silho.R")
+  source("test-python-silho-2.R")
   
   
   if(number_cores == 0){

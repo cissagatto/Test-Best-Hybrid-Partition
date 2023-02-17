@@ -54,7 +54,7 @@ cat("\n\nCreating a list of parameters")
 parameters = list()
 
 # config_file = "/home/biomal/Test-Best-Hybrid-Partition/config-files/clus/jaccard-3/silho/tcsj3-GpositiveGO.csv"
-# config_file = "/home/biomal/Test-Best-Hybrid-Partition/config-files/python/jaccard-3/silho/tpsj3-GpositiveGO.csv"
+# config_file = "/home/biomal/Test-Best-Hybrid-Partition/config-files/python/jaccard/ward.D2/silho/tpjws-GpositiveGO.csv"
 
 
 cat("\n\nGetting arguments for commnad line")
@@ -101,22 +101,26 @@ similarity = toString(config$Value[5])
 similarity = str_remove(similarity, pattern = " ")
 parameters$Config$Similarity = similarity
 
-criteria = toString(config$Value[6])
+dendrogram = toString(config$Value[6])
+dendrogram = str_remove(dendrogram, pattern = " ")
+parameters$Config$Dendrogram = dendrogram
+
+criteria = toString(config$Value[7])
 criteria = str_remove(criteria, pattern = " ")
 parameters$Config$Criteria = criteria 
 
-dataset_name = toString(config$Value[7])
+dataset_name = toString(config$Value[8])
 dataset_name = str_remove(dataset_name, pattern = " ")
 parameters$Config$Dataset.Name = dataset_name
 
-number_dataset = as.numeric(config$Value[8])
+number_dataset = as.numeric(config$Value[9])
 parameters$Config$Number.Dataset = number_dataset
 
-number_folds = as.numeric(config$Value[9])
+number_folds = as.numeric(config$Value[10])
 parameters$Config$Number.Folds = number_folds
 
-number_cores = as.numeric(config$Value[10])
-parameters$Config$Number.cores = number_cores
+number_cores = as.numeric(config$Value[11])
+parameters$Config$Number.Cores = number_cores
 
 ds = datasets[number_dataset,]
 parameters$DatasetInfo = ds
@@ -126,6 +130,7 @@ cat("\n\nCreating directories")
 if (dir.exists(folderResults) == FALSE) {dir.create(folderResults)}
 diretorios <- directories(parameters)
 parameters$Folders = diretorios
+
 
 cat("\n\nChecking the dataset tar.gz file")
 str00 = paste(dataset_path, "/", ds$Name,".tar.gz", sep = "")
@@ -147,7 +152,7 @@ if(file.exists(str00)==FALSE){
   cat("\n####################################################################\n\n")
   
   # COPIANDO
-  str01 = paste("cp ", str00, " ", diretorios$folderDatasets, sep = "")
+  str01 = paste("cp ", str00, " ", parameters$Folders$folderDatasets, sep = "")
   res = system(str01)
   if (res != 0) {
     cat("\nError: ", str01)
@@ -155,8 +160,8 @@ if(file.exists(str00)==FALSE){
   }
   
   # DESCOMPACTANDO
-  str02 = paste("tar xzf ", diretorios$folderDatasets, "/", ds$Name,
-                ".tar.gz -C ", diretorios$folderDatasets, sep = "")
+  str02 = paste("tar xzf ", parameters$Folders$folderDatasets, "/", ds$Name,
+                ".tar.gz -C ", parameters$Folders$folderDatasets, sep = "")
   res = system(str02)
   if (res != 0) {
     cat("\nError: ", str02)
@@ -164,7 +169,7 @@ if(file.exists(str00)==FALSE){
   }
   
   #APAGANDO
-  str03 = paste("rm ", diretorios$folderDatasets, "/", ds$Name,
+  str03 = paste("rm ", parameters$Folders$folderDatasets, "/", ds$Name,
                 ".tar.gz", sep = "")
   res = system(str03)
   if (res != 0) {
@@ -174,7 +179,8 @@ if(file.exists(str00)==FALSE){
   
 }
 
-cat("\n\nChecking the BEST PARTITIONS tar.gz file")
+
+cat("\n\nChecking the BEST HYBRID PARTITIONS tar.gz file")
 str00 = paste(Partitions_Path, "/", ds$Name,".tar.gz", sep = "")
 str00 = str_remove(str00, pattern = " ")
 
@@ -291,6 +297,7 @@ if(parameters$Config$Implementation =="clus"){
   destino = paste("nuvem:Test-Best-Hybrid-Partitions/",
                   parameters$Config$Implementation, "/", 
                   parameters$Config$Similarity, "/", 
+                  parameters$Config$Dendrogram, "/", 
                   parameters$Config$Criteria, "/", 
                   parameters$Config$Dataset.Name, sep="")
   comando1 = paste("rclone -P copy ", origem, " ", destino, sep="")

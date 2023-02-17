@@ -1,8 +1,8 @@
 rm(list = ls())
 
 ##############################################################################
-# CHAINS OF HYBRID PARTITIONS                                                #
-# Copyright (C) 2022                                                         #
+# TEST BEST HYBRID PARTITION                                                 #
+# Copyright (C) 2023                                                         #
 #                                                                            #
 # This code is free software: you can redistribute it and/or modify it under #
 # the terms of the GNU General Public License as published by the Free       #
@@ -40,111 +40,137 @@ setwd(FolderRoot)
 datasets = data.frame(read.csv("datasets-original.csv"))
 n = nrow(datasets)
 
-Implementation = c("clus", "utiml", "mulan", "python")
-Implementation.2 = c("c", "u", "m", "p")
 
-Similarity = c("jaccard-3","rogers-2")
-Similarity.2 = c("j3", "ro2")
+Implementation.1 = c("python", "clus")
+Implementation.2 = c("p", "c")
 
-Criteria = c("maf1", "mif1", "silho")
-Criteria.2 = c("ma", "mi", "s")
+Similarity.1 = c("jaccard","rogers")
+Similarity.2 = c("j", "ro")
+
+Dendrogram.1 = c("ward.D2", "single")
+Dendrogram.2 = c("w", "s")
+
+Criteria.1 = c("silho","maf1", "mif1")
+Criteria.2 = c("s", "ma", "mi")
 
 FolderCF = paste(FolderRoot, "/config-files", sep="")
 if(dir.exists(FolderCF)==FALSE){dir.create(FolderCF)}
 
-# primeiro é o Implementation
+# IMPLEMENTAÇÃO
 p = 1
-while(p<=length(Implementation)){
+while(p<=length(Implementation.1)){
   
-  FolderImplementation = paste(FolderCF, "/", Implementation[p], sep="")
+  FolderImplementation = paste(FolderCF, "/", Implementation.1[p], sep="")
   if(dir.exists(FolderImplementation)==FALSE){dir.create(FolderImplementation)}
   
-  # depois é pela medida de Similarity
+  # SIMILARIDADE
   s = 1
-  while(s<=length(Similarity)){
+  while(s<=length(Similarity.1)){
     
-    FolderSimilarity = paste(FolderImplementation, "/", Similarity[s], sep="")
+    FolderSimilarity = paste(FolderImplementation, "/", Similarity.1[s], sep="")
     if(dir.exists(FolderSimilarity)==FALSE){dir.create(FolderSimilarity)}
     
-    # agora é o critério de validação
-    w = 1
-    while(w<=length(Criteria)){
+    # DENDROGRAMA
+    f = 1
+    while(f<=length(Dendrogram.1)){
       
-      FolderCriteria = paste(FolderSimilarity, "/", Criteria[w], sep="")
-      if(dir.exists(FolderCriteria)==FALSE){dir.create(FolderCriteria)}
+      FolderDendro = paste(FolderSimilarity, "/", Dendrogram.1[f], sep="")
+      if(dir.exists(FolderDendro)==FALSE){dir.create(FolderDendro)}
       
-      # por fim o dataset
-      d = 1
-      while(d<=nrow(datasets)){
+      w = 1
+      while(w<=length(Criteria.1)){
         
-        ds = datasets[d,]
+        FolderCriteria = paste(FolderDendro, "/", Criteria.1[w], sep="")
+        if(dir.exists(FolderCriteria)==FALSE){dir.create(FolderCriteria)}
         
-        cat("\n\n=======================================")
-        cat("\n", Implementation[p])
-        cat("\n", Similarity[s])
-        cat("\n", Criteria[w])
-        cat("\n", ds$Name)
-        cat("\n=======================================\n")
+        # por fim o dataset
+        d = 1
+        while(d<=nrow(datasets)){
+          
+          ds = datasets[d,]
+          
+          cat("\n\n=======================================")
+          cat("\n", Implementation.1[p])
+          cat("\n\t", Similarity.1[s])
+          cat("\n\t", Dendrogram.1[f])
+          cat("\n\t", Criteria.1[w])
+          cat("\n\t", ds$Name)
+          cat("\n=======================================\n")
+          
+          name = paste("t", 
+                       Implementation.2[p], "", 
+                       Similarity.2[s], "", 
+                       Dendrogram.2[f], "", 
+                       Criteria.2[w], "-",
+                       ds$Name, sep="")  
+          
+          file.name = paste(FolderCriteria, "/", name, ".csv", sep="")
+          
+          output.file <- file(file.name, "wb")
+          
+          write("Config, Value",
+                file = output.file, append = TRUE)
+          
+          write("Dataset_Path, /home/elaine/Datasets", 
+                file = output.file, append = TRUE)
+          
+          folder.name = paste("/dev/shm/", name, sep = "")
+          
+          str1 = paste("Temporary_Path, ", folder.name, sep="")
+          write(str1,file = output.file, append = TRUE)
+          
+          str.1 = paste("/home/elaine/Best-Partitions/", 
+                        Similarity.1[s], "/",
+                        Dendrogram.1[f], "/", 
+                        Criteria.1[w],
+                        sep="")
+          str.2 = paste("Partitions_Path, ", str.1,  sep="")
+          write(str.2, file = output.file, append = TRUE)
+          
+          str0 = paste("Implementation, ", Implementation.1[p], sep="")
+          write(str0, file = output.file, append = TRUE)
+          
+          str3 = paste("Similarity, ", Similarity.1[s], sep="")
+          write(str3, file = output.file, append = TRUE)
+          
+          str3 = paste("Dendrogram, ", Dendrogram.1[f], sep="")
+          write(str3, file = output.file, append = TRUE)
+          
+          str2 = paste("Criteria, ", Criteria.1[w], sep="")
+          write(str2, file = output.file, append = TRUE)
+          
+          str3 = paste("Dataset_Name, ", ds$Name, sep="")
+          write(str3, file = output.file, append = TRUE)
+          
+          str4 = paste("Number_Dataset, ", ds$Id, sep="")
+          write(str4, file = output.file, append = TRUE)
+          
+          write("Number_Folds, 10", file = output.file, append = TRUE)
+          
+          write("Number_Cores, 10", file = output.file, append = TRUE)
+          
+          close(output.file)
+          
+          d = d + 1
+          gc()
+        } # FIM DO DATASET
         
-        name = paste("t", Implementation.2[p], "", Criteria.2[w], "", 
-                     Similarity.2[s], "-", ds$Name, sep="")  
-        
-        file.name = paste(FolderCriteria, "/", name, ".csv", sep="")
-        
-        output.file <- file(file.name, "wb")
-        
-        write("Config, Value",
-              file = output.file, append = TRUE)
-        
-        write("Dataset_Path, /home/biomal/Datasets", 
-              file = output.file, append = TRUE)
-        
-        folder.name = paste("/dev/shm/", name, sep = "")
-        
-        str1 = paste("Temporary_Path, ", folder.name, sep="")
-        write(str1,file = output.file, append = TRUE)
-        
-        str.1 = paste("/home/biomal/Best-Partitions/", Similarity[s], 
-                      "/", Criteria[w], sep="")
-        str.2 = paste("Partitions_Path, ", str.1,  sep="")
-        write(str.2, file = output.file, append = TRUE)
-        
-        str0 = paste("Implementation, ", Implementation[p], sep="")
-        write(str0, file = output.file, append = TRUE)
-        
-        str3 = paste("Similarity, ", Similarity[s], sep="")
-        write(str3, file = output.file, append = TRUE)
-        
-        str2 = paste("Criteria, ", Criteria[w], sep="")
-        write(str2, file = output.file, append = TRUE)
-        
-        str3 = paste("Dataset_Name, ", ds$Name, sep="")
-        write(str3, file = output.file, append = TRUE)
-        
-        str4 = paste("Number_Dataset, ", ds$Id, sep="")
-        write(str4, file = output.file, append = TRUE)
-        
-        write("Number_Folds, 10", file = output.file, append = TRUE)
-        
-        write("Number_Cores, 1", file = output.file, append = TRUE)
-        
-        close(output.file)
-        
-        d = d + 1
+        w = w + 1
         gc()
-      } # fim do dataset
+      } # FIM DO CRITERIO
       
-      w = w + 1
+      f = f + 1
       gc()
-    } # fim do Implementation
+      
+    } # FIM DO DENDROGRAMA
     
     s = s + 1
     gc()
-  } # fim da
+  } # FIM DA SIMILARIDADE
   
   p = p + 1
   gc()
-} # fim do Implementation
+} # FIM DA IMPLEMENTAÇÃO
 
 
 
