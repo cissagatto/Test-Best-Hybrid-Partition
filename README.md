@@ -1,5 +1,5 @@
 # Test-Best-Hybrid-Partition
-This code is part of my Ph.D. research. Test the best hybrid partition chosen - with any of the criteria methods - using ECC or CLUS
+This code is part of my PhD research at PPG-CC/DC/UFSCar in colaboration with Katholieke Universiteit Leuven Campus Kulak Kortrijk Belgium. Test the best hybrid partition chosen - with any of the criteria methods - using ECC or CLUS
 
 
 ## How to cite 
@@ -20,6 +20,7 @@ This code source is composed of the project R to be used in RStudio IDE and also
 10. tbhp.R
 11. jobs.R
 12. config_files.R
+
 
 ## Preparing your experiment
 
@@ -44,20 +45,21 @@ A file called _datasets-original.csv_ must be in the *root project directory*. T
 | Mean.IR      | optional  | **                                                    | 
 | Scumble      | optional  | **                                                    | 
 | TCS          | optional  | **                                                    | 
-| AttStart     | mandatory | Column number where the attribute space begins*       | 
+| AttStart     | mandatory | Column number where the attribute space begins * 1    | 
 | AttEnd       | mandatory | Column number where the attribute space ends          |
 | LabelStart   | mandatory | Column number where the label space begins            |
 | LabelEnd     | mandatory | Column number where the label space ends              |
-| Distinct     | optional  | **                                                    |
+| Distinct     | optional  | ** 2                                                  |
 | xn           | mandatory | Value for Dimension X of the Kohonen map              | 
 | yn           | mandatory | Value for Dimension Y of the Kohonen map              |
 | gridn        | mandatory | X times Y value. Kohonen's map must be square         |
 | max.neigbors | mandatory | The maximum number of neighbors is given by LABELS -1 |
 
 
-* Because it is the first column the number is always 1.
+1 - Because it is the first column the number is always 1.
 
-** [Click here](https://link.springer.com/book/10.1007/978-3-319-41111-8) to get explanation about each property.
+2 - [Click here](https://link.springer.com/book/10.1007/978-3-319-41111-8) to get explanation about each property.
+
 
 
 ### STEP 2
@@ -101,14 +103,15 @@ To run this code you will need a configuration file saved in *csv* format and wi
 | Temporary_Path  | Absolute path to the directory where temporary processing will be performed*  |
 | Partitions_Path | Absolute path to the directory where the best partitions are                  |
 | Implementation  | Must be "clus", "mulan", "python" or "utiml"                                  |
+| Dendrogram      | The linkage metric that were used to build the dendrogram: single, ward., etc |
 | Similarity      | Must be "jaccard", "rogers" or another similarity measure                     |
 | Criteria        | Must be "maf1" to test the best partition chosen with Macro-F1,               |
 |                 | "mif1" to test the best partition chosen with Micro-F1,                       |
 |                 | or "silho" to test the best partition chosen with Silhouette                  |
-| dataset_name    | Dataset name according to *datasets-original.csv* file                        |
-| number_dataset  | Dataset number according to *datasets-original.csv* file                      |
-| number_folds    | Number of folds used in cross validation                                      |
-| number_cores    | Number of cores for parallel processing                                       |
+| Dataset_Name    | Dataset name according to *datasets-original.csv* file                        |
+| Number_Dataset  | Dataset number according to *datasets-original.csv* file                      |
+| Number_Folds    | Number of folds used in cross validation                                      |
+| Number_Cores    | Number of cores for parallel processing                                       |
 
 * Use directorys like */dev/shm*, *tmp* or *scratch* here.
 
@@ -150,7 +153,7 @@ Rscript tbhp.R [absolute_path_to_config_file]
 Example:
 
 ```
-Rscript tbhp.R "~/Test-Best-Hybrid-Partition/config-files/clus/jaccard-3/silho/tcsj3-GpositiveGO.csv"
+Rscript tbhp.R "~/Test-Best-Hybrid-Partition/config-files/python/jaccard/ward.D2/silho/tpjws-GpositiveGO.csv"
 ```
 
 ## DOWNLOAD RESULTS
