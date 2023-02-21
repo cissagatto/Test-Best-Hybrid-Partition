@@ -28,31 +28,55 @@ rm(list = ls())
 ##############################################################################
 
 
-
+##################################################
+# SET WORK SPACE
+##################################################
 FolderRoot = "~/Test-Best-Hybrid-Partition"
 FolderScripts = "~/Test-Best-Hybrid-Partition"
 
-
+##################################################
+# PACKAGES
+##################################################
 library(stringr)
 
 
+##################################################
+# DATASETS INFORMATION
+##################################################
 setwd(FolderRoot)
 datasets = data.frame(read.csv("datasets-original.csv"))
 n = nrow(datasets)
 
 
+##################################################
+# WHICH IMPLEMENTATION WILL BE USED?
+##################################################
 Implementation.1 = c("python", "clus")
 Implementation.2 = c("p", "c")
 
+
+######################################################
+# SIMILARITY MEASURE USED TO MODEL LABEL CORRELATIONS
+######################################################
 Similarity.1 = c("jaccard","rogers")
 Similarity.2 = c("j", "ro")
 
+
+##################################################
+# LINKAGE METRIC USED TO BUILT THE DENDROGRAM
+##################################################
 Dendrogram.1 = c("ward.D2", "single")
 Dendrogram.2 = c("w", "s")
 
+
+######################################################
+# CRITERIA USED TO CHOOSE THE BEST HYBRID PARTITION
+######################################################
 Criteria.1 = c("silho","maf1", "mif1")
 Criteria.2 = c("s", "ma", "mi")
 
+
+######################################################
 FolderCF = paste(FolderRoot, "/config-files", sep="")
 if(dir.exists(FolderCF)==FALSE){dir.create(FolderCF)}
 
@@ -77,13 +101,14 @@ while(p<=length(Implementation.1)){
       FolderDendro = paste(FolderSimilarity, "/", Dendrogram.1[f], sep="")
       if(dir.exists(FolderDendro)==FALSE){dir.create(FolderDendro)}
       
+      # CRITERIA
       w = 1
       while(w<=length(Criteria.1)){
         
         FolderCriteria = paste(FolderDendro, "/", Criteria.1[w], sep="")
         if(dir.exists(FolderCriteria)==FALSE){dir.create(FolderCriteria)}
         
-        # por fim o dataset
+        # DATASET
         d = 1
         while(d<=nrow(datasets)){
           
@@ -95,7 +120,6 @@ while(p<=length(Implementation.1)){
           cat("\n\t", Dendrogram.1[f])
           cat("\n\t", Criteria.1[w])
           cat("\n\t", ds$Name)
-          cat("\n=======================================\n")
           
           name = paste("t", 
                        Implementation.2[p], "", 
@@ -111,15 +135,15 @@ while(p<=length(Implementation.1)){
           write("Config, Value",
                 file = output.file, append = TRUE)
           
-          write("Dataset_Path, /home/elaine/Datasets", 
+          write("Dataset_Path, /Datasets", 
                 file = output.file, append = TRUE)
           
-          folder.name = paste("/dev/shm/", name, sep = "")
+          folder.name = paste("/scratch/", name, sep = "")
           
           str1 = paste("Temporary_Path, ", folder.name, sep="")
           write(str1,file = output.file, append = TRUE)
           
-          str.1 = paste("/home/elaine/Best-Partitions/", 
+          str.1 = paste("/2-Best-Partitions/HPML.A/", 
                         Similarity.1[s], "/",
                         Dendrogram.1[f], "/", 
                         Criteria.1[w],
