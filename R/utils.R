@@ -87,17 +87,17 @@ directories <- function(parameters){
   #############################################################################
   #
   #############################################################################
-  folderReports = paste(FolderRoot, "/Reports", sep="")
-  if(dir.exists(folderReports) == TRUE){
-    setwd(folderReports)
-    dir_folderReports = dir(folderReports)
-    n_folderReports = length(dir_folderReports)
-  } else {
-    dir.create(folderReports)
-    setwd(folderReports)
-    dir_folderReports = dir(folderReports)
-    n_folderReports = length(dir_folderReports)
-  }
+  # folderReports = paste(FolderRoot, "/Reports", sep="")
+  # if(dir.exists(folderReports) == TRUE){
+  #   setwd(folderReports)
+  #   dir_folderReports = dir(folderReports)
+  #   n_folderReports = length(dir_folderReports)
+  # } else {
+  #   dir.create(folderReports)
+  #   setwd(folderReports)
+  #   dir_folderReports = dir(folderReports)
+  #   n_folderReports = length(dir_folderReports)
+  # }
   
   #############################################################################
   #

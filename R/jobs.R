@@ -240,25 +240,84 @@ while(p<=length(Implementation.1)){
           write(str.7, file = output.file, append = TRUE)
           
           write("", file = output.file, append = TRUE)
+          write("echo LISTING SCRATCH", file = output.file, append = TRUE)
           write("cd /scratch", file = output.file, append = TRUE)
-          
-          write("", file = output.file, append = TRUE)
           write("ls ", file = output.file, append = TRUE)
           
           write("", file = output.file, append = TRUE)
-          str = paste("ls ", scratch.name, file = output.file, append = TRUE)
+          write("echo entrando na pasta", file = output.file, append = TRUE)
+          str = paste("cd ", name, sep="")
           write(str, file = output.file, append = TRUE)
+          
+          
+          write("", file = output.file, append = TRUE)
+          write("echo LISTING SCRATCH/NAME", file = output.file, append = TRUE)
+          write("ls ", file = output.file, append = TRUE)
+          
           
           write("", file = output.file, append = TRUE)
           write("echo COPYING SINGULARITY", file = output.file, append = TRUE)
           str.30 = paste("cp /home/u704616/Experimentos.sif ", scratch.name, sep ="")
           write(str.30 , file = output.file, append = TRUE)
+     
+          
+          write("", file = output.file, append = TRUE)
+          write("echo CRIANDO TESTED", file = output.file, append = TRUE)
+          str.29 = paste("mkdir ", scratch.name, "/Tested", sep="")
+          write(str.29, file = output.file, append = TRUE)
           
           
           write("", file = output.file, append = TRUE)
-          write("echo listing", file = output.file, append = TRUE)
-          str.8 = paste("ls ", scratch.name, sep ="")
-          write(str.8, file = output.file, append = TRUE)
+          write("echo CRIANDO DATASET", file = output.file, append = TRUE)
+          str.28 = paste("mkdir ", scratch.name, "/Datasets", sep="")
+          write(str.28, file = output.file, append = TRUE)
+          
+          write("", file = output.file, append = TRUE)
+          write("echo CRIANDO PARTITIONS", file = output.file, append = TRUE)
+          str.27 = paste("mkdir ", scratch.name, "/Partitions", sep="")
+          write(str.27, file = output.file, append = TRUE)
+          
+          write("", file = output.file, append = TRUE)
+          write("echo CRIANDO pasta", file = output.file, append = TRUE)
+          str.26 = paste("mkdir ", scratch.name, "/Datasets/", 
+                         ds$Name, sep="")
+          write(str.26, file = output.file, append = TRUE)
+          
+          write("", file = output.file, append = TRUE)
+          write("echo CRIANDO pasta", file = output.file, append = TRUE)
+          str.25 = paste("mkdir ", scratch.name, "/Datasets/", 
+                         ds$Name, "/LabelSpace", sep="")
+          write(str.25, file = output.file, append = TRUE)
+          
+          write("", file = output.file, append = TRUE)
+          write("echo CRIANDO pasta", file = output.file, append = TRUE)
+          str.24 = paste("mkdir ", scratch.name, "/Datasets/", 
+                         ds$Name, "/NamesLabels", sep="")
+          write(str.24, file = output.file, append = TRUE)
+          
+          write("", file = output.file, append = TRUE)
+          write("echo CRIANDO pasta", file = output.file, append = TRUE)
+          str.23 = paste("mkdir ", scratch.name, "/Datasets/", 
+                         ds$Name, "/CrosValidation", sep="")
+          write(str.23, file = output.file, append = TRUE)
+          
+          write("", file = output.file, append = TRUE)
+          write("echo CRIANDO pasta", file = output.file, append = TRUE)
+          str.21 = paste("mkdir ",scratch.name, "/Datasets/", 
+                         ds$Name, "/CrosValidation/Tr", sep="")
+          write(str.21, file = output.file, append = TRUE)
+          
+          write("", file = output.file, append = TRUE)
+          write("echo CRIANDO pasta", file = output.file, append = TRUE)
+          str.20 = paste("mkdir ",scratch.name, "/Datasets/", 
+                         ds$Name, "/CrosValidation/Ts", sep="")
+          write(str.20, file = output.file, append = TRUE)
+          
+          write("", file = output.file, append = TRUE)
+          write("echo CRIANDO pasta", file = output.file, append = TRUE)
+          str.19 = paste("mkdir ",scratch.name, "/Datasets/", 
+                         ds$Name, "/CrosValidation/Vl", sep="")
+          write(str.19, file = output.file, append = TRUE)
           
           
           write(" ", file = output.file, append = TRUE)
