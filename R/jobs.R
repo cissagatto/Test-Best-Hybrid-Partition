@@ -239,6 +239,15 @@ while(p<=length(Implementation.1)){
           str.7 = paste("mkdir ", scratch.name, sep = "")
           write(str.7, file = output.file, append = TRUE)
           
+          write("", file = output.file, append = TRUE)
+          write("cd /scratch", file = output.file, append = TRUE)
+          
+          write("", file = output.file, append = TRUE)
+          write("ls ", file = output.file, append = TRUE)
+          
+          write("", file = output.file, append = TRUE)
+          str = paste("ls ", scratch.name, file = output.file, append = TRUE)
+          write(str, file = output.file, append = TRUE)
           
           write("", file = output.file, append = TRUE)
           write("echo COPYING SINGULARITY", file = output.file, append = TRUE)
@@ -248,14 +257,15 @@ while(p<=length(Implementation.1)){
           
           write("", file = output.file, append = TRUE)
           write("echo listing", file = output.file, append = TRUE)
-          str.8 = paste("ls /", scratch.name, sep ="")
+          str.8 = paste("ls ", scratch.name, sep ="")
           write(str.8, file = output.file, append = TRUE)
           
           
           write(" ", file = output.file, append = TRUE)
           write("echo SETANDO RCLONE", file = output.file, append = TRUE)
-          write("singularity instance start --bind ~/.config/rclone/:/root/.config/rclone Experimentos.sif EXP", 
-                file = output.file, append = TRUE)
+          str = paste("singularity instance start --bind ~/.config/rclone/:/root/.config/rclone ", 
+                      scratch.name, "/Experimentos.sif EXP", sep="")
+          write(str, file = output.file, append = TRUE)
           
           
           write(" ", file = output.file, append = TRUE)

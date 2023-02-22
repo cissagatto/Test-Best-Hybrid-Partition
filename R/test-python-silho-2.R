@@ -36,7 +36,7 @@ FolderScripts = "~/Test-Best-Hybrid-Partition/R"
 build.python.silho <- function(parameters) {
   
   f = 1
-  bthpkParalel <- foreach(f = 1:number_folds) %dopar% {
+  bthpkParalel <- foreach(f = 1:parameters$Config$Number.Folds) %dopar% {
   # while(f<=parameters$Config$Number.Folds){
     
     cat("\n\n=================================================")
@@ -425,8 +425,8 @@ gather.eval.python.silho <- function(parameters) {
     
     # vector with names
     measures = c("accuracy","average-precision","clp","coverage","F1",
-                 "hamming-loss","macro-AUC", "macro-F1","macro-precision",
-                 "macro-recall","margin-loss","micro-AUC","micro-F1",
+                 "hamming-loss","macro-auc", "macro-f1","macro-precision",
+                 "macro-recall","margin-loss","micro-auc","micro-f1",
                  "micro-precision","micro-recall","mlp","one-error",
                  "precision","ranking-loss", "recall","subset-accuracy","wlp")
     
