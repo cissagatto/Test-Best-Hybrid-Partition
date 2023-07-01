@@ -53,8 +53,7 @@ datasets <- data.frame(read.csv("datasets-original.csv"))
 cat("\n\nCreating a list of parameters")
 parameters = list()
 
-# config_file = "/home/biomal/Test-Best-Hybrid-Partition/config-files/clus/jaccard-3/silho/tcsj3-GpositiveGO.csv"
-# config_file = "/home/biomal/Test-Best-Hybrid-Partition/config-files/python/jaccard/ward.D2/silho/tpjws-GpositiveGO.csv"
+# config_file = "/home/biomal/Test-Best-Hybrid-Partition/config-files-laptop/clus/rogers/ward.D2/silho/tbhp-GpositiveGO.csv"
 
 
 cat("\n\nGetting arguments for commnad line")

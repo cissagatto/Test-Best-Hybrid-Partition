@@ -310,7 +310,7 @@ directories <- function(parameters){
   #############################################################################
   # RETURN ALL PATHS                                                          #
   #############################################################################
-  retorno$folderReports = folderReports
+  #retorno$folderReports = folderReports
   retorno$folderTested = folderTested
   retorno$folderResults = folderResults
   retorno$folderUtils = folderUtils
@@ -329,7 +329,7 @@ directories <- function(parameters){
   #############################################################################
   # RETURN ALL DIRS                                                           #
   #############################################################################
-  retorno$dir_folderReports = dir_folderReports
+  #retorno$dir_folderReports = dir_folderReports
   retorno$dir_folderTested = dir_folderTested
   retorno$dir_folderResults = dir_folderResults
   retorno$dir_folderUtils = dir_folderUtils
@@ -348,7 +348,7 @@ directories <- function(parameters){
   #############################################################################
   # RETURN ALL LENGHTS                                                        #
   #############################################################################
-  retorno$n_folderReports = n_folderReports
+  #retorno$n_folderReports = n_folderReports
   retorno$n_folderTested = n_folderTested
   retorno$n_folderResults = n_folderResults
   retorno$n_folderUtils = n_folderUtils
