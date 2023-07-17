@@ -23,8 +23,8 @@
 ###########################################################################
 #
 ###########################################################################
-FolderRoot = "/Test-Best-Hybrid-Partition"
-FolderScripts = "/Test-Best-Hybrid-Partition/R"
+FolderRoot = "~/Test-Best-Hybrid-Partition"
+FolderScripts = "~/Test-Best-Hybrid-Partition/R"
 
 library("foreign", quietly = TRUE)
 library("AggregateR", quietly = TRUE)

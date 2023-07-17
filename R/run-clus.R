@@ -26,8 +26,8 @@
 ##############################################################################
 
 
-FolderRoot = "/Test-Best-Hybrid-Partition"
-FolderScripts = "/Test-Best-Hybrid-Partition/R"
+FolderRoot = "~/Test-Best-Hybrid-Partition"
+FolderScripts = "~/Test-Best-Hybrid-Partition/R"
 
 
 
@@ -40,8 +40,8 @@ FolderScripts = "/Test-Best-Hybrid-Partition/R"
 ##################################################################################################
 execute.run.clus <- function(parameters){
   
-  FolderRoot = "/Test-Best-Hybrid-Partition"
-  FolderScripts = "/Test-Best-Hybrid-Partition/R"
+  FolderRoot = "~/Test-Best-Hybrid-Partition"
+  FolderScripts = "~/Test-Best-Hybrid-Partition/R"
   
   setwd(FolderScripts)
   source("misc.R")

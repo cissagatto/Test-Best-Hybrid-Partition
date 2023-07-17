@@ -31,8 +31,8 @@ rm(list = ls())
 ##################################################
 # SET WORK SPACE
 ##################################################
-FolderRoot = "/Test-Best-Hybrid-Partition"
-FolderScripts = "/Test-Best-Hybrid-Partition/R"
+FolderRoot = "~/Test-Best-Hybrid-Partition"
+FolderScripts = "~/Test-Best-Hybrid-Partition/R"
 
 
 ##################################################
@@ -81,7 +81,7 @@ Criteria.2 = c("s")
 FolderJobs = paste(FolderRoot, "/jobs", sep="")
 if(dir.exists(FolderJobs)==FALSE){dir.create(FolderJobs)}
 
-FolderCF = "/Test-Best-Hybrid-Partition/config-files-apptainer"
+FolderCF = "~/Test-Best-Hybrid-Partition/config-files-apptainer"
 
 
 # IMPLEMENTAÇÃO
@@ -343,7 +343,7 @@ while(p<=length(Implementation.1)){
           write(" ", file = output.file, append = TRUE)
           write("echo EXECUTANDO", file = output.file, append = TRUE)
           str = paste("singularity run --app Rscript instance://EXPt",
-                      a, " /Test-Best-Hybrid-Partition/R/tbhp.R \"/Test-Best-Hybrid-Partition/config-files-apptainer/",
+                      a, " ~/Test-Best-Hybrid-Partition/R/tbhp.R \"~/Test-Best-Hybrid-Partition/config-files-apptainer/",
                       Implementation.1[p], "/", Similarity.1[s], "/", 
                       Dendrogram.1[f], "/", Criteria.1[w], "/", 
                       config.file.name, "\"", sep="")

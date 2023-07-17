@@ -23,8 +23,8 @@
 ###########################################################################
 #
 ###########################################################################
-FolderRoot = "/Test-Best-Hybrid-Partition"
-FolderScripts = "/Test-Best-Hybrid-Partition/R"
+FolderRoot = "~/Test-Best-Hybrid-Partition"
+FolderScripts = "~/Test-Best-Hybrid-Partition/R"
 
 
 ##################################################################################################
@@ -41,8 +41,8 @@ build.clus.maf1 <- function(parameters){
 
     cat("\nFold: ", f)
 
-    FolderRoot = "/Test-Best-Hybrid-Partition"
-    FolderScripts = "/Test-Best-Hybrid-Partition/R"
+    FolderRoot = "~/Test-Best-Hybrid-Partition"
+    FolderScripts = "~/Test-Best-Hybrid-Partition/R"
 
     setwd(FolderScripts)
     source("libraries.R")
@@ -402,8 +402,8 @@ gather.clus.maf1 <- function(parameters){
     
     cat("\nFold: ", f)
     
-    FolderRoot = "/Test-Best-Hybrid-Partition"
-    FolderScripts = "/Test-Best-Hybrid-Partition/R"
+    FolderRoot = "~/Test-Best-Hybrid-Partition"
+    FolderScripts = "~/Test-Best-Hybrid-Partition/R"
     
     setwd(FolderScripts)
     source("libraries.R")
@@ -504,8 +504,8 @@ evaluate.clus.maf1 <- function(parameters){
     
     cat("\nFold: ", f)
     
-    FolderRoot = "/Test-Best-Hybrid-Partition"
-    FolderScripts = "/Test-Best-Hybrid-Partition/R"
+    FolderRoot = "~/Test-Best-Hybrid-Partition"
+    FolderScripts = "~/Test-Best-Hybrid-Partition/R"
     
     setwd(FolderScripts)
     source("libraries.R")

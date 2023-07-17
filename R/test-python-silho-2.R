@@ -26,8 +26,8 @@
 ##############################################################################
 
 
-FolderRoot = "/Test-Best-Hybrid-Partition"
-FolderScripts = "/Test-Best-Hybrid-Partition/R"
+FolderRoot = "~/Test-Best-Hybrid-Partition"
+FolderScripts = "~/Test-Best-Hybrid-Partition/R"
 
 
 #########################################################################
@@ -43,8 +43,8 @@ build.python.silho <- function(parameters) {
     cat("\nFold: ", f)
     
     #########################################################################
-    FolderRoot = "/Test-Best-Hybrid-Partition"
-    FolderScripts = "/Test-Best-Hybrid-Partition/R"
+    FolderRoot = "~/Test-Best-Hybrid-Partition"
+    FolderScripts = "~/Test-Best-Hybrid-Partition/R"
     
     setwd(FolderScripts)
     source("libraries.R")
@@ -245,8 +245,8 @@ gather.preds.python.silho <- function(parameters) {
     # while(f<=parameters$Config$Number.Folds){
     cat("\nFold: ", f)
     
-    FolderRoot = "/Test-Best-Hybrid-Partition"
-    FolderScripts = "/Test-Best-Hybrid-Partition/R"
+    FolderRoot = "~/Test-Best-Hybrid-Partition"
+    FolderScripts = "~/Test-Best-Hybrid-Partition/R"
     
     setwd(FolderScripts)
     source("libraries.R")
@@ -346,8 +346,8 @@ evaluate.python.silho <- function(parameters) {
   avalParal <- foreach(f = 1:parameters$Config$Number.Folds) %dopar% {
     cat("\nFold: ", f)
     
-    FolderRoot = "/Test-Best-Hybrid-Partition"
-    FolderScripts = "/Test-Best-Hybrid-Partition/R"
+    FolderRoot = "~/Test-Best-Hybrid-Partition"
+    FolderScripts = "~/Test-Best-Hybrid-Partition/R"
     
     # data frame
     apagar = c(0)

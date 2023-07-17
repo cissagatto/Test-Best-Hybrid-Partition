@@ -32,8 +32,8 @@ cat("\n\n##############################################")
 
 
 cat("\n\nSeting Workspace")
-FolderRoot = "/Test-Best-Hybrid-Partition"
-FolderScripts = "/Test-Best-Hybrid-Partition/R"
+FolderRoot = "~~/Test-Best-Hybrid-Partition"
+FolderScripts = "~~/Test-Best-Hybrid-Partition/R"
 
 cat("\n\nLoading source files")
 setwd(FolderScripts)
@@ -53,7 +53,7 @@ datasets <- data.frame(read.csv("datasets-original.csv"))
 cat("\n\nCreating a list of parameters")
 parameters = list()
 
-# config_file = "/home/biomal/Test-Best-Hybrid-Partition/config-files-laptop/clus/rogers/ward.D2/silho/tbhp-GpositiveGO.csv"
+# config_file = "/home/biomal~/Test-Best-Hybrid-Partition/config-files-laptop/clus/rogers/ward.D2/silho/tbhp-GpositiveGO.csv"
 
 
 cat("\n\nGetting arguments for commnad line")
