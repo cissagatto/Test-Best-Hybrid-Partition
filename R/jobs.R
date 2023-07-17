@@ -31,8 +31,8 @@ rm(list = ls())
 ##################################################
 # SET WORK SPACE
 ##################################################
-FolderRoot = "~/Test-Best-Hybrid-Partition"
-FolderScripts = "~/Test-Best-Hybrid-Partition/R"
+FolderRoot = "/Test-Best-Hybrid-Partition"
+FolderScripts = "/Test-Best-Hybrid-Partition/R"
 
 
 ##################################################

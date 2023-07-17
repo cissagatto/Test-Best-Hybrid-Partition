@@ -32,8 +32,8 @@ cat("\n\n##############################################")
 
 
 cat("\n\nSeting Workspace")
-FolderRoot = "~/Test-Best-Hybrid-Partition"
-FolderScripts = "~/Test-Best-Hybrid-Partition/R"
+FolderRoot = "/Test-Best-Hybrid-Partition"
+FolderScripts = "/Test-Best-Hybrid-Partition/R"
 
 cat("\n\nLoading source files")
 setwd(FolderScripts)
@@ -247,7 +247,8 @@ if(parameters$Config$Implementation =="clus"){
   destino = paste("nuvem:Test-Best-Hybrid-Partitions/",
                   parameters$Config$Implementation, "/", 
                   parameters$Config$Similarity, "/", 
-                  parameters$Config$Criteria, "/", 
+                  parameters$Config$Criteria, "/",
+                  parameters$Config$Dendrogram, "/", 
                   parameters$Config$Dataset.Name, sep="")
   comando1 = paste("rclone -P copy ", origem, " ", destino, sep="")
   cat("\n", comando1, "\n")
@@ -331,6 +332,8 @@ print(system(str_c))
 rm(list = ls())
 gc()
 
+
+system(paste("rm Variance_RHE_1.csv"))
 
 cat("\n\n############################################################")
   cat("\n# END TEST BEST HYBRID PARTITION                           #")

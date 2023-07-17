@@ -21,8 +21,8 @@
 
 
 
-FolderRoot = "~/Test-Best-Hybrid-Partition"
-FolderScripts = "~/Test-Best-Hybrid-Partition/R"
+FolderRoot = "/Test-Best-Hybrid-Partition"
+FolderScripts = "/Test-Best-Hybrid-Partition/R"
 
 
 #########################################################################
@@ -39,8 +39,8 @@ FolderScripts = "~/Test-Best-Hybrid-Partition/R"
 #########################################################################
 directories <- function(parameters){
   
-  FolderRoot = "~/Test-Best-Hybrid-Partition"
-  FolderScripts = "~/Test-Best-Hybrid-Partition/R"
+  FolderRoot = "/Test-Best-Hybrid-Partition"
+  FolderScripts = "/Test-Best-Hybrid-Partition/R"
   
   retorno = list()
   
