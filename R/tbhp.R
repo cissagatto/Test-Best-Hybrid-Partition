@@ -32,8 +32,8 @@ cat("\n\n##############################################")
 
 
 cat("\n\nSeting Workspace")
-FolderRoot = "~~/Test-Best-Hybrid-Partition"
-FolderScripts = "~~/Test-Best-Hybrid-Partition/R"
+FolderRoot = "~/Test-Best-Hybrid-Partition"
+FolderScripts = "~/Test-Best-Hybrid-Partition/R"
 
 cat("\n\nLoading source files")
 setwd(FolderScripts)
